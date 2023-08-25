@@ -7,11 +7,11 @@ import JobCard from "@/components/JobCard.vue";
     <div class="container">
       <div class="flex flex-wrap items-center justify-around">
         <div class="">
-          <div class="mb-4">
+          <div class="mb-4 md:mb-10">
             <h1 class="text-title font-bold">
               <span>Elita</span><span class="text-red-500">Work</span>
             </h1>
-            <p class="text-lg text-neutral-700">Мы находим, вы выбираете</p>
+            <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
           </div>
 
           <button

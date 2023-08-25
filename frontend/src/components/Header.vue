@@ -41,55 +41,49 @@ const isRouteActive = (routeName, isButton = false) => {
             <img alt="logo" class="h-12" src="@/assets/images/logo.png" />
           </router-link>
         </div>
-        <nav
-          :class="{ active: menuActive }"
-          class="menu rounded-e-xl shadow-2xl max-[768px]:bg-neutral-0 md:max-w-none"
-        >
-          <ul
-            class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
-          >
-            <li>
-              <router-link
-                :class="isRouteActive('Home')"
-                to="/"
-                @click="CloseMenu"
-                >Домой
-              </router-link>
-            </li>
-            <li>
-              <router-link
-                :class="isRouteActive('jobs')"
-                to="/jobs"
-                @click="CloseMenu"
-              >
-                Вакансии
-              </router-link>
-            </li>
-            <li>
-              <router-link
-                :class="isRouteActive('about')"
-                to="/about"
-                @click="CloseMenu"
-              >
-                О нас
-              </router-link>
-            </li>
-          </ul>
-        </nav>
-        <div class="left-block flex items-center gap-5">
-          <div class="user-box flex items-center gap-5">
-            <router-link class="rounded-xl bg-neutral-30 p-2" to="/contact">
-              Связаться с нами
-            </router-link>
-          </div>
-          <div
+        <div class="flex items-center gap-12">
+          <nav
             :class="{ active: menuActive }"
-            class="menu-burger md:hidden"
-            @click="toggleMenu"
+            class="menu rounded-e-xl shadow-2xl max-[768px]:bg-neutral-0 md:max-w-none"
           >
-            <span class="bg-primary-black"></span>
-            <span class="bg-primary-black"></span>
-            <span class="bg-primary-black"></span>
+            <ul
+              class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
+            >
+              <li>
+                <router-link
+                  :class="isRouteActive('jobs')"
+                  to="/jobs"
+                  @click="CloseMenu"
+                >
+                  Вакансии
+                </router-link>
+              </li>
+              <li>
+                <router-link
+                  :class="isRouteActive('about')"
+                  to="/about"
+                  @click="CloseMenu"
+                >
+                  О нас
+                </router-link>
+              </li>
+            </ul>
+          </nav>
+          <div class="left-block flex items-center gap-5">
+            <div class="user-box flex items-center gap-5">
+              <router-link class="rounded-xl bg-neutral-30 p-2" to="/contact">
+                Связаться с нами
+              </router-link>
+            </div>
+            <div
+              :class="{ active: menuActive }"
+              class="menu-burger md:hidden"
+              @click="toggleMenu"
+            >
+              <span class="bg-primary-black"></span>
+              <span class="bg-primary-black"></span>
+              <span class="bg-primary-black"></span>
+            </div>
           </div>
         </div>
       </div>
