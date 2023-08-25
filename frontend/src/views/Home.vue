@@ -24,7 +24,7 @@ import JobCard from "@/components/JobCard.vue";
       </div>
 
       <section class="text-center">
-        <div class="">Вакансии:</div>
+        <h2 class="text-xl">Вакансии:</h2>
         <div>
           <JobCard :job="{ name: 'kifli' }"></JobCard>
         </div>
