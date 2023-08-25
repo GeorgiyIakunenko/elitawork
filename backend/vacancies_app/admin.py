@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-
-from .models import Position, Manager, Contact, MessengerPlatform, Currency
+from adminsortable2.admin import SortableAdminMixin
+from django.contrib.auth.models import Group
+from .models import Position, Manager, Contact, MessengerPlatform
 
 
 def manager_through_str(self):
@@ -18,11 +19,12 @@ class ManagerInline(admin.TabularInline):
     verbose_name_plural = "Менеджеры для этой позиции"
 
 
-class PositionAdmin(admin.ModelAdmin):
-    list_display = ("name", "important", "get_picture_small")
+class PositionAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "important", "get_picture_small", "position_order")
     list_display_links = ("name",)
     list_editable = ("important",)
     readonly_fields = ('get_picture_large',)
+    prepopulated_fields = {"slug": ("name",)}
     inlines = [ManagerInline]
 
     def get_picture_small(self, obj):
@@ -36,14 +38,14 @@ class PositionAdmin(admin.ModelAdmin):
     get_picture_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "important", "salary", "currency", "location", "note", "description", "picture")
+        self.fields = ("name", "slug", "important", "salary", "location", "note", "description", "picture")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ('name', 'important', 'salary', 'currency', 'location', 'note', 'description')
+                 'fields': ('name', 'slug', 'important', 'salary', 'location', 'note', 'description')
              }
              ),
             (None,
@@ -72,8 +74,8 @@ class ContactInline(admin.TabularInline):
     inlines = [MessengerPlatformInline]
 
 
-class ManagerAdmin(admin.ModelAdmin):
-    list_display = ("name", "get_photo_small")
+class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ("name", "get_photo_small", "manager_order")
     list_display_links = ("name",)
     readonly_fields = ('get_photo_large',)
     inlines = [ContactInline]
@@ -122,7 +124,9 @@ admin.site.register(Position, PositionAdmin)
 admin.site.register(Manager, ManagerAdmin)
 admin.site.register(Contact)
 admin.site.register(MessengerPlatform, MessengerPlatformAdmin)
-admin.site.register(Currency)
+
+admin.site.unregister(Group)
+
 
 admin.site.site_title = "Elita Work Admin"
 admin.site.site_header = "Elita Work Admin"
