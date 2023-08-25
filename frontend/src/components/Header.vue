@@ -16,7 +16,7 @@ const isRouteActive = (routeName, isButton = false) => {
 
   //console.log(currentRoute, routeName)
 
-  if (currentRoute.toLowerCase() === routeName.toLowerCase()) {
+  if (currentRoute === routeName.toLowerCase()) {
     return "font-bold ";
   }
 
