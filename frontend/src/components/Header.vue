@@ -1,6 +1,7 @@
-<script setup  >
+<script setup>
 import { ref } from "vue";
 import router from "@/router";
+
 const menuActive = ref(false);
 
 const toggleMenu = () => {
@@ -15,7 +16,7 @@ const isRouteActive = (routeName, isButton = false) => {
 
   //console.log(currentRoute, routeName)
 
-  if (currentRoute === routeName) {
+  if (currentRoute.toLowerCase() === routeName.toLowerCase()) {
     return "font-bold ";
   }
 
@@ -29,61 +30,62 @@ const isRouteActive = (routeName, isButton = false) => {
 
 <template>
   <header
-      class="min-h-11 fixed left-0 right-0 top-0 bg-primary-white py-3 font-sans shadow-md"
+    class="fixed left-0 right-0 top-0 bg-primary-white py-3 font-sans shadow-md"
   >
     <div class="container">
       <div class="wrapper flex items-center justify-between">
         <div
-            class="z-20  cursor-pointer p-1 transition-all duration-300 hover:scale-105"
+          class="z-20 cursor-pointer p-1 transition-all duration-300 hover:scale-105"
         >
-          <router-link @click="CloseMenu" to="/">
-            <img class="h-10 " src="@/assets/images/logo.png" alt="logo">
+          <router-link to="/" @click="CloseMenu">
+            <img alt="logo" class="h-12" src="@/assets/images/logo.png" />
           </router-link>
         </div>
         <nav
-            class="menu rounded-e-xl shadow-2xl max-[768px]:bg-neutral-0"
-            :class="{ active: menuActive }"
+          :class="{ active: menuActive }"
+          class="menu rounded-e-xl shadow-2xl max-[768px]:bg-neutral-0 md:max-w-none"
         >
-          <ul class="mt-12 flex gap-3 text-primary-black font-medium md:mt-0 md:gap-12">
+          <ul
+            class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
+          >
             <li>
               <router-link
-                  @click="CloseMenu"
-                  :class="isRouteActive('Home')"
-                  to="/"
-              >Домой
+                :class="isRouteActive('Home')"
+                to="/"
+                @click="CloseMenu"
+                >Домой
               </router-link>
             </li>
             <li>
               <router-link
-                  @click="CloseMenu"
-                  :class="isRouteActive('Vacancies')"
-                  to="/jobs"
-              > Вакансии
+                :class="isRouteActive('jobs')"
+                to="/jobs"
+                @click="CloseMenu"
+              >
+                Вакансии
               </router-link>
             </li>
             <li>
               <router-link
-                  @click="CloseMenu"
-                  :class="isRouteActive('About us')"
-                  to="/about"
-              > О нас
+                :class="isRouteActive('about')"
+                to="/about"
+                @click="CloseMenu"
+              >
+                О нас
               </router-link>
             </li>
           </ul>
         </nav>
         <div class="left-block flex items-center gap-5">
           <div class="user-box flex items-center gap-5">
-            <router-link
-                to="/contact"
-                class="rounded-xl bg-neutral-30 p-2"
-            >
+            <router-link class="rounded-xl bg-neutral-30 p-2" to="/contact">
               Связаться с нами
             </router-link>
           </div>
           <div
-              @click="toggleMenu"
-              class="menu-burger md:hidden "
-              :class="{ active: menuActive }"
+            :class="{ active: menuActive }"
+            class="menu-burger md:hidden"
+            @click="toggleMenu"
           >
             <span class="bg-primary-black"></span>
             <span class="bg-primary-black"></span>
@@ -98,7 +100,7 @@ const isRouteActive = (routeName, isButton = false) => {
 <style scoped>
 header {
   z-index: 10;
-  height: 70px;
+  height: 80px;
 }
 
 /* Menu burger */
@@ -159,6 +161,11 @@ header {
     position: fixed;
   }
 
+  nav {
+    min-width: 100%;
+    background-color: rgba(255, 255, 255, 0.97);
+  }
+
   .menu.active {
     transform: translateX(0);
   }
@@ -167,10 +174,10 @@ header {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding: 50px;
+    padding: 100px 20px 50px 20px;
     height: 100%;
-    font-size: 25px;
-    grid-gap: 45px;
+    font-size: 40px;
+    grid-gap: 55px;
   }
 }
 </style>
