@@ -1,26 +1,21 @@
 from django.db import models
 
 
-class Currency(models.Model):
-    name = models.CharField(max_length=5, unique=True, verbose_name="Название (UAH, HUF и т.д.)")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Валюта"
-        verbose_name_plural = "Валюты"
-
-
 class Position(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название Позиции")
+    slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name="URL")
     important = models.BooleanField(verbose_name="Отметить как важную")
     picture = models.ImageField(upload_to="positions", verbose_name="Картинка")
-    salary = models.FloatField(verbose_name="Зарплата в месяц")
-    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, verbose_name="Валюта")
+    salary = models.CharField(max_length=100, verbose_name="Зарплата")
     location = models.CharField(max_length=100, verbose_name="Город, Страна")
     note = models.CharField(blank=True, null=True, max_length=100, verbose_name="Примечание (если есть)")
     description = models.TextField(verbose_name="Description")
+
+    position_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
 
     def __str__(self):
         return self.name
@@ -28,6 +23,7 @@ class Position(models.Model):
     class Meta:
         verbose_name = "Позиция"
         verbose_name_plural = "Позиции"
+        ordering = ['position_order']
 
 
 class MessengerPlatform(models.Model):
@@ -60,9 +56,16 @@ class Manager(models.Model):
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
     positions = models.ManyToManyField(Position, verbose_name="Позиции")
 
+    manager_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = "Менеджер"
         verbose_name_plural = "Менеджеры"
+        ordering = ['manager_order']

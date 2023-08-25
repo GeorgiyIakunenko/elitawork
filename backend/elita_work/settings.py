@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vacancies_app',
+    'rest_framework',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [
