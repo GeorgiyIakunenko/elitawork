@@ -13,6 +13,9 @@ module.exports = {
         "card-bg": "#F4F5F7",
         primary: {
           disabled: "rgba(239, 159, 39, 0.5)",
+          red: "#EF9F27",
+          white: "#FFFFFF",
+          black: "#000000",
           500: "#FF991F",
           400: "#FF991F",
           300: "#FFAB00",
@@ -21,6 +24,7 @@ module.exports = {
           75: "#FFF0B3",
           50: "#FFFAE5",
         },
+
         green: {
           500: "#064",
           400: "#00875A",
