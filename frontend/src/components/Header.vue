@@ -17,7 +17,7 @@ const isRouteActive = (routeName, isButton = false) => {
   //console.log(currentRoute, routeName)
 
   if (currentRoute === routeName.toLowerCase()) {
-    return "font-bold ";
+    return "link-active ";
   }
 
   if (isButton) {
@@ -49,23 +49,17 @@ const isRouteActive = (routeName, isButton = false) => {
             <ul
               class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
             >
-              <li>
-                <router-link
-                  :class="isRouteActive('jobs')"
-                  to="/jobs"
-                  @click="CloseMenu"
-                >
+              <li :class="isRouteActive('jobs')" class="relative">
+                <router-link to="/jobs" @click="CloseMenu">
                   Вакансии
                 </router-link>
+                <div class="link__underline"></div>
               </li>
-              <li>
-                <router-link
-                  :class="isRouteActive('about')"
-                  to="/about"
-                  @click="CloseMenu"
-                >
+              <li :class="isRouteActive('about')" class="relative">
+                <router-link class="relative" to="/about" @click="CloseMenu">
                   О нас
                 </router-link>
+                <div class="link__underline"></div>
               </li>
             </ul>
           </nav>
@@ -95,6 +89,24 @@ const isRouteActive = (routeName, isButton = false) => {
 header {
   z-index: 10;
   height: 80px;
+}
+
+.link__underline {
+  position: absolute;
+  width: 0;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  background-color: #ff0000;
+  transition: all 0.3s ease-in-out;
+}
+
+li:hover .link__underline {
+  width: 100%;
+}
+
+.link-active .link__underline {
+  width: 100%;
 }
 
 /* Menu burger */
@@ -167,8 +179,8 @@ header {
   .menu ul {
     flex-direction: column;
     justify-content: start;
-    align-items: center;
-    padding: 100px 20px 50px 20px;
+    align-items: start;
+    padding: 100px 20px 50px 50px;
     height: 100%;
     font-size: 40px;
     grid-gap: 55px;
