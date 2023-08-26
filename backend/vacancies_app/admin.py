@@ -38,14 +38,14 @@ class PositionAdmin(SortableAdminMixin, admin.ModelAdmin):
     get_picture_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "slug", "important", "salary", "location", "note", "description", "picture")
+        self.fields = ("name", "slug", "important", "salary", "location", "note", "short_description", "description", "picture")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ('name', 'slug', 'important', 'salary', 'location', 'note', 'description')
+                 'fields': ('name', 'slug', 'important', 'salary', 'location', 'note', 'short_description', 'description')
              }
              ),
             (None,
@@ -72,6 +72,8 @@ class ContactInline(admin.TabularInline):
     model = Manager.contacts.through
     extra = 1
     inlines = [MessengerPlatformInline]
+    verbose_name = "Контакт"
+    verbose_name_plural = "Контакты"
 
 
 class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):

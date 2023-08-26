@@ -16,6 +16,7 @@ class Position(models.Model):
     salary = models.CharField(max_length=100, verbose_name="Зарплата")
     location = models.CharField(max_length=100, verbose_name="Город, Страна")
     note = models.CharField(blank=True, null=True, max_length=100, verbose_name="Примечание (если есть)")
+    short_description = models.TextField(max_length=300, verbose_name="Краткое описание для мета тега, максимум 300 символов")
     description = models.TextField(verbose_name="Description")
 
     position_order = models.PositiveIntegerField(
