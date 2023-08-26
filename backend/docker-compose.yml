@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web-amd64:
-    image: yuriipalamar/elitawork-backends:latest-amd64
+    image: yuriipalamar/elitawork-backend:latest-amd64
     command: python manage.py runserver 127.0.0.1:8008
     volumes:
       - .:/app
@@ -10,7 +10,7 @@ services:
       - "8008:8008"
 
   web-arm64:
-    image: yuriipalamar/elitawork-backends:latest-arm64
+    image: yuriipalamar/elitawork-backend:latest-arm64
     command: python manage.py runserver 127.0.0.1:8008
     volumes:
       - .:/app
