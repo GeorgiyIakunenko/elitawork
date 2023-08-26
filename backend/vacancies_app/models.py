@@ -1,11 +1,18 @@
+from django.core.exceptions import ValidationError
 from django.db import models
+
+
+def validate_svg_file(value):
+    # You can add more specific SVG validations here if needed.
+    if not value.name.endswith('.svg'):
+        raise ValidationError("Only SVG files are allowed.")
 
 
 class Position(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название Позиции")
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name="URL")
     important = models.BooleanField(verbose_name="Отметить как важную")
-    picture = models.ImageField(upload_to="positions", verbose_name="Картинка")
+    picture = models.FileField(upload_to="positions", verbose_name="Картинка", validators=[validate_svg_file])
     salary = models.CharField(max_length=100, verbose_name="Зарплата")
     location = models.CharField(max_length=100, verbose_name="Город, Страна")
     note = models.CharField(blank=True, null=True, max_length=100, verbose_name="Примечание (если есть)")
