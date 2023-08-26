@@ -1,30 +1,19 @@
 <script setup>
 import JobCard from "@/components/JobCard.vue";
-import { onMounted, ref } from "vue";
 import { useAppStore } from "@/stores/store";
-import axios from "axios";
+import router from "@/router";
+import { onMounted, ref } from "vue";
+import { getJobs } from "@/api/api";
 
-const jobs = ref([]);
+const appStore = useAppStore();
 
-function getJobs() {
-  return axios
-    .get("http://elitawork.yuriipalamarchuk.com/api/v1/positions/")
-    .then((response) => response.data)
-    .catch((error) => {
-      throw error; // Rethrow the error to be caught in the caller function
-    });
-}
-
-const store = useAppStore();
+let job = ref({});
 
 onMounted(async () => {
-  try {
-    const res = await getJobs();
-    console.log(res);
-    jobs.value = res;
-  } catch (error) {
-    console.error("An error occurred while fetching jobs:", error);
-  }
+  await getJobs();
+  job = appStore.jobs.find(
+    (job) => job.id === router.currentRoute.value.params.id,
+  );
 });
 
 // Query
@@ -34,9 +23,15 @@ onMounted(async () => {
   <main>
     <div class="container">
       <div class="">
-        <h1>Наши вакансии</h1>
+        <button
+          class="btn mb-5 ml-auto w-fit rounded-xl bg-red-500 px-3.5 py-2 text-primary-white"
+          @click="() => router.push({ name: 'homeJobs' })"
+        >
+          Вернуться назад
+        </button>
+        <h1 class="mb-10 text-center text-3xl">Наши вакансии</h1>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <JobCard v-for="job in jobs" :job="job"></JobCard>
+          <JobCard :job="job"></JobCard>
         </div>
       </div>
     </div>

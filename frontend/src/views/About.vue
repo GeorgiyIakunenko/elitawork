@@ -14,7 +14,7 @@ onMounted(() => {
         <h1 class="mb-7 text-center text-3xl font-semibold md:mb-14">О нас</h1>
         <div
           class="mb-6 text-gray-600 md:mx-auto md:w-3/5"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-duration="1000"
         >
           Компания Elita Work - это инновационная и динамично развивающаяся
@@ -25,7 +25,7 @@ onMounted(() => {
         </div>
         <div
           class="md:mx-auto md:w-3/5"
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-duration="1000"
         >
           <div class="mb-4 flex items-center justify-center gap-3">

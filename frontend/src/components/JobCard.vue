@@ -1,4 +1,6 @@
 <script setup>
+import router from "@/router";
+
 const props = defineProps({
   job: {
     type: Object,
@@ -31,6 +33,7 @@ const props = defineProps({
         </div>
         <button
           class="btn ml-auto w-fit rounded-xl bg-red-500 px-3.5 py-2 text-primary-white"
+          @click="() => router.push({ name: 'job', params: { id: job.id } })"
         >
           Подробнее
         </button>

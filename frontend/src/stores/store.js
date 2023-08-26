@@ -8,8 +8,19 @@ export const useAppStore = defineStore("store", () => {
     jobs.value = data;
   };
 
+  const getJobById = (id) => {
+    console.log(id);
+    console.log(jobs.value);
+    return jobs.value.forEach((job) => {
+      if (job.id === id) {
+        return job;
+      }
+    });
+  };
+
   return {
     jobs,
     setJobs,
+    getJobById,
   };
 });
