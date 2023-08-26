@@ -13,8 +13,9 @@ const CloseMenu = () => {
 
 const isRouteActive = (routeName, isButton = false) => {
   const currentRoute = router.currentRoute.value.name;
+  console.log(currentRoute, routeName.toLowerCase());
 
-  if (currentRoute === routeName.toLowerCase()) {
+  if (currentRoute === routeName) {
     return "link-active ";
   }
 
@@ -47,7 +48,7 @@ const isRouteActive = (routeName, isButton = false) => {
             <ul
               class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
             >
-              <li :class="isRouteActive('jobs')" class="relative">
+              <li :class="isRouteActive('homeJobs')" class="relative">
                 <router-link :to="{ name: 'homeJobs' }" @click="CloseMenu">
                   Вакансии
                 </router-link>

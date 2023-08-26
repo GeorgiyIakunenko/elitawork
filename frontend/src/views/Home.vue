@@ -64,4 +64,11 @@ import { scrollToSection } from "@/components/scrollToElement";
 #top {
   min-height: calc(100vh - 100px);
 }
+
+@media (min-width: 768px) {
+  #top {
+    margin-top: -130px;
+    min-height: calc(100vh);
+  }
+}
 </style>
