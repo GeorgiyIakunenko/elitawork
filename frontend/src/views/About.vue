@@ -76,7 +76,7 @@ onMounted(() => {
               <img alt="" class="h-12" src="@/assets/images/individual.svg" />
               <div class="text-lg">Индивидуальный подход</div>
             </div>
-            <div class="text-gray-600" data-aos="fade-left">
+            <div class="text-gray-600" data-aos="fade-down">
               Мы понимаем, что каждая компания уникальна, и поэтому наш подход к
               решению задач клиентов всегда индивидуален. Мы тщательно
               анализируем потребности и цели каждого клиента, чтобы предложить
@@ -92,7 +92,7 @@ onMounted(() => {
               <img alt="" class="h-12" src="@/assets/images/client.svg" />
               <div class="text-lg">Клиентоориентированность</div>
             </div>
-            <div class="text-gray-600" data-aos="fade-right">
+            <div class="text-gray-600" data-aos="fade-down">
               Наши клиенты - наш главный приоритет. Мы строим долгосрочные
               партнерские отношения, основанные на доверии, эффективной
               коммуникации и превосходном обслуживании.
