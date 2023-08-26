@@ -72,6 +72,8 @@ class ContactInline(admin.TabularInline):
     model = Manager.contacts.through
     extra = 1
     inlines = [MessengerPlatformInline]
+    verbose_name = "Контакт"
+    verbose_name_plural = "Контакты"
 
 
 class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
