@@ -4,6 +4,8 @@ venv/
 /.env
 .env
 .source
+media_files/managers/*
+media_files/positions
 
 # Logs
 logs
