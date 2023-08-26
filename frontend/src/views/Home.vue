@@ -45,6 +45,7 @@ import { scrollToSection } from "@/components/scrollToElement";
         <div class="mb-4 h-40 bg-neutral-200">
           dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
           sdg sd g fsd g dfs g
+          <router-link to="/job/1">To job</router-link>
         </div>
         <div class="mb-4 h-40 bg-neutral-200">
           dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g

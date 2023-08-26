@@ -13,6 +13,8 @@ const router = createRouter({
       console.log("home");
       return { top: 0, behavior: "smooth" };
     }
+
+    return { top: 0, behavior: "smooth" };
   },
   routes: [
     {
@@ -41,6 +43,11 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       name: "NotFound",
       component: () => import("@/views/PageNotFound.vue"),
+    },
+    {
+      path: "/job/:id",
+      name: "job",
+      component: () => import("../views/Job.vue"),
     },
   ],
 });

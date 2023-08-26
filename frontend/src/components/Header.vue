@@ -11,6 +11,10 @@ const CloseMenu = () => {
   menuActive.value = false;
 };
 
+const a = 0;
+
+console.log(a);
+
 const isRouteActive = (routeName, isButton = false) => {
   const currentRoute = router.currentRoute.value.name;
   console.log(currentRoute, routeName.toLowerCase());
