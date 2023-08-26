@@ -62,7 +62,7 @@ class Manager(models.Model):
     photo = models.ImageField(null=True, upload_to="managers", verbose_name="Фото")
     job_position = models.CharField(max_length=50, verbose_name="Должность")
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
-    positions = models.ManyToManyField(Position, verbose_name="Позиции")
+    positions = models.ManyToManyField(Position, blank=True, verbose_name="Позиции")
 
     manager_order = models.PositiveIntegerField(
         default=0,
