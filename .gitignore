@@ -6,6 +6,7 @@ venv/
 .source
 media_files/managers/*
 media_files/positions
+db.sqlite3
 
 # Logs
 logs
