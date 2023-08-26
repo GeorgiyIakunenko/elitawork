@@ -1,19 +1,33 @@
 <script setup>
-import { useAppStore } from "@/stores/store";
 import JobCard from "@/components/JobCard.vue";
-import { useQuery } from "@tanstack/vue-query";
+import { onMounted, ref } from "vue";
+import { useAppStore } from "@/stores/store";
+import axios from "axios";
+
+const jobs = ref([]);
+
+function getJobs() {
+  return axios
+    .get("http://elitawork.yuriipalamarchuk.com/api/v1/positions/")
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error; // Rethrow the error to be caught in the caller function
+    });
+}
 
 const store = useAppStore();
 
-const { isLoading, isFetching, isError, data, error } = useQuery({
-  queryKey: ["todos"],
-  queryFn: () =>
-    fetch("https://api.github.com/repos/TanStack/query").then((res) =>
-      res.json(),
-    ),
+onMounted(async () => {
+  try {
+    const res = await getJobs();
+    console.log(res);
+    jobs.value = res;
+  } catch (error) {
+    console.error("An error occurred while fetching jobs:", error);
+  }
 });
 
-console.log(isLoading, isFetching, isError, data, error);
+// Query
 </script>
 
 <template>
@@ -22,7 +36,7 @@ console.log(isLoading, isFetching, isError, data, error);
       <div class="">
         <h1>Наши вакансии</h1>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <JobCard v-for="job in store.jobs" :job="job"></JobCard>
+          <JobCard v-for="job in jobs" :job="job"></JobCard>
         </div>
       </div>
     </div>

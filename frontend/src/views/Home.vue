@@ -1,6 +1,13 @@
 <script setup>
 import JobCard from "@/components/JobCard.vue";
 import { scrollToSection } from "@/components/scrollToElement";
+import { onMounted } from "vue";
+import { getJobs } from "@/api/api";
+import { useAppStore } from "@/stores/store";
+
+onMounted(async () => {
+  await getJobs();
+});
 </script>
 
 <template>
@@ -26,34 +33,11 @@ import { scrollToSection } from "@/components/scrollToElement";
       </section>
 
       <section id="jobs" class="text-center">
-        <h2 class="text-xl">Вакансии:</h2>
-        <div>
-          <JobCard :job="{ name: 'kifli' }"></JobCard>
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
-          <router-link to="/job/1">To job</router-link>
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
-        </div>
-        <div class="mb-4 h-40 bg-neutral-200">
-          dgasdgdfsgfds df sg sdf g sdfg d sfg sdf g sdfg sdf g dfs g s fg sd g
-          sdg sd g fsd g dfs g
+        <h2 class="mb-10 text-4xl font-bold text-red-500">Наши вакансии:</h2>
+        <div
+          class="mx-auto grid grid-cols-1 justify-center gap-3 gap-y-9 sm:grid-cols-2 md:gap-5 lg:grid-cols-3"
+        >
+          <JobCard v-for="job in useAppStore().jobs" :job="job"></JobCard>
         </div>
       </section>
       <a>scroll</a>

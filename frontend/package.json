@@ -10,6 +10,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
+    "@tanstack/vue-query": "^4.34.0",
     "aos": "^2.3.4",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
