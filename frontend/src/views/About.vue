@@ -1,18 +1,33 @@
-<script lang="ts" setup></script>
+<script setup>
+import { onMounted } from "vue";
+import AOS from "aos";
+
+onMounted(() => {
+  AOS.init();
+});
+</script>
 
 <template>
   <main class="min-h-screen bg-gray-100 font-sans">
     <div class="container">
       <div class="rounded-lg bg-white p-8 shadow-md">
         <h1 class="mb-7 text-center text-3xl font-semibold md:mb-14">О нас</h1>
-        <div class="mb-6 text-gray-600 md:mx-auto md:w-3/5">
+        <div
+          class="mb-6 text-gray-600 md:mx-auto md:w-3/5"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
           Компания Elita Work - это инновационная и динамично развивающаяся
           организация, специализирующаяся в области трудоустройства, рекрутинга
           и управления персоналом. С нашим богатым опытом и экспертизой в сфере
           человеческих ресурсов, мы стремимся предоставлять клиентам
           высококачественные решения для эффективного управления персоналом.
         </div>
-        <div class="md:mx-auto md:w-3/5">
+        <div
+          class="md:mx-auto md:w-3/5"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
           <div class="mb-4 flex items-center justify-center gap-3">
             <img alt="" class="h-12" src="@/assets/images/mission.svg" />
             <div class="text-lg">Наша миссия</div>
@@ -38,6 +53,8 @@
         <div class="flex flex-col gap-8">
           <div
             class="rounded-xl bg-neutral-0 md:mx-auto md:w-3/5 md:p-7 md:shadow"
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <div class="mb-4 flex items-center justify-center gap-3">
               <img alt="" class="h-12" src="@/assets/images/team.svg" />
@@ -52,12 +69,14 @@
           </div>
           <div
             class="rounded-xl bg-neutral-0 md:mx-auto md:w-3/5 md:p-7 md:shadow"
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <div class="mb-4 flex items-center justify-center gap-3">
               <img alt="" class="h-12" src="@/assets/images/individual.svg" />
               <div class="text-lg">Индивидуальный подход</div>
             </div>
-            <div class="text-gray-600">
+            <div class="text-gray-600" data-aos="fade-down">
               Мы понимаем, что каждая компания уникальна, и поэтому наш подход к
               решению задач клиентов всегда индивидуален. Мы тщательно
               анализируем потребности и цели каждого клиента, чтобы предложить
@@ -66,12 +85,14 @@
           </div>
           <div
             class="rounded-xl bg-neutral-0 md:mx-auto md:w-3/5 md:p-7 md:shadow"
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <div class="mb-4 flex items-center justify-center gap-3">
               <img alt="" class="h-12" src="@/assets/images/client.svg" />
               <div class="text-lg">Клиентоориентированность</div>
             </div>
-            <div class="text-gray-600">
+            <div class="text-gray-600" data-aos="fade-down">
               Наши клиенты - наш главный приоритет. Мы строим долгосрочные
               партнерские отношения, основанные на доверии, эффективной
               коммуникации и превосходном обслуживании.
@@ -79,7 +100,7 @@
           </div>
         </div>
         <div class="mt-14 md:mx-auto md:w-3/5">
-          <div class="md:flex">
+          <div class="md:flex" data-aos="fade-up">
             <img
               alt=""
               class="float-left mr-4 w-20"
