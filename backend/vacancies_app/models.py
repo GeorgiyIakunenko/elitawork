@@ -12,7 +12,7 @@ class Position(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название Позиции")
     slug = models.SlugField(max_length=100, unique=True, db_index=True, verbose_name="URL")
     important = models.BooleanField(verbose_name="Отметить как важную")
-    picture = models.FileField(upload_to="positions", verbose_name="Картинка", validators=[validate_svg_file])
+    picture = models.ImageField(upload_to="positions", verbose_name="Картинка")
     salary = models.CharField(max_length=100, verbose_name="Зарплата")
     location = models.CharField(max_length=100, verbose_name="Город, Страна")
     note = models.CharField(blank=True, null=True, max_length=100, verbose_name="Примечание (если есть)")
@@ -35,7 +35,7 @@ class Position(models.Model):
 
 class MessengerPlatform(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название (Viber, Telegram и т.д.)")
-    logo = models.ImageField(verbose_name="Логотип")
+    logo = models.FileField(verbose_name="Логотип", validators=[validate_svg_file])
 
     def __str__(self):
         return self.name
@@ -62,7 +62,7 @@ class Manager(models.Model):
     photo = models.ImageField(null=True, upload_to="managers", verbose_name="Фото")
     job_position = models.CharField(max_length=50, verbose_name="Должность")
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
-    positions = models.ManyToManyField(Position, verbose_name="Позиции")
+    positions = models.ManyToManyField(Position, blank=True, verbose_name="Позиции")
 
     manager_order = models.PositiveIntegerField(
         default=0,
