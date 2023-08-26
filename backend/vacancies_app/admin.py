@@ -91,14 +91,14 @@ class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
     get_photo_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "contacts", "positions", "photo")
+        self.fields = ("name", "job_position", "contacts", "positions", "photo")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ("name", "positions")
+                 'fields': ("name", "job_position", "positions")
              }
              ),
             (None,

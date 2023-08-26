@@ -53,6 +53,7 @@ class Contact(models.Model):
 class Manager(models.Model):
     name = models.CharField(max_length=100, verbose_name="Имя")
     photo = models.ImageField(null=True, upload_to="managers", verbose_name="Фото")
+    job_position = models.CharField(max_length=50, verbose_name="Должность")
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
     positions = models.ManyToManyField(Position, verbose_name="Позиции")
 
