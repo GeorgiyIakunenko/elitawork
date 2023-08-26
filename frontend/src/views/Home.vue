@@ -4,6 +4,7 @@ import { scrollToSection } from "@/components/scrollToElement";
 import { onMounted } from "vue";
 import { getJobs } from "@/api/api";
 import { useAppStore } from "@/stores/store";
+import Button from "@/components/Button.vue";
 
 onMounted(async () => {
   await getJobs();
@@ -21,13 +22,7 @@ onMounted(async () => {
             </h1>
             <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
           </div>
-
-          <button
-            class="btn rounded-xl bg-red-500 px-3.5 py-2 text-primary-white"
-            @click="scrollToSection('jobs')"
-          >
-            Смотреть вакансии
-          </button>
+          <Button @click="scrollToSection('jobs')">Смотреть вакансии</Button>
         </div>
         <img alt="" class="w-max" src="@/assets/images/home-image.jpg" />
       </section>

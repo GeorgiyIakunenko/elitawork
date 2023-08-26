@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import router from "@/router";
+import Button from "@/components/Button.vue";
 
 const menuActive = ref(false);
 
@@ -68,8 +69,8 @@ const isRouteActive = (routeName, isButton = false) => {
           </nav>
           <div class="left-block flex items-center gap-5">
             <div class="user-box flex items-center gap-5">
-              <router-link class="rounded-xl bg-neutral-30 p-2" to="/contact">
-                Связаться с нами
+              <router-link class="" to="/contact">
+                <Button>Связаться с нами</Button>
               </router-link>
             </div>
             <div

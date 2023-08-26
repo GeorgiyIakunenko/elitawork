@@ -2,21 +2,18 @@
 import JobCard from "@/components/JobCard.vue";
 import { useAppStore } from "@/stores/store";
 import router from "@/router";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { getJobs } from "@/api/api";
 
 const appStore = useAppStore();
 
-let job = ref({});
+const id = router.currentRoute.value.params.id;
 
 onMounted(async () => {
   await getJobs();
-  job = appStore.jobs.find(
-    (job) => job.id === router.currentRoute.value.params.id,
-  );
+  appStore.getCurrentJob(id);
+  console.log(appStore.currentJob);
 });
-
-// Query
 </script>
 
 <template>
@@ -31,7 +28,7 @@ onMounted(async () => {
         </button>
         <h1 class="mb-10 text-center text-3xl">Наши вакансии</h1>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <JobCard :job="job"></JobCard>
+          <JobCard :job="appStore.currentJob"></JobCard>
         </div>
       </div>
     </div>

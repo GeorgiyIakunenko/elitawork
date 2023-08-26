@@ -16,7 +16,7 @@ const props = defineProps({
     <img
       :alt="job.name"
       :src="job.picture"
-      class="mb-3 cursor-pointer rounded-xl"
+      class="mb-3 cursor-pointer rounded-xl object-contain"
     />
     <div class="flex flex-grow flex-col px-4">
       <div class="mb-2 flex flex-grow justify-between text-start">

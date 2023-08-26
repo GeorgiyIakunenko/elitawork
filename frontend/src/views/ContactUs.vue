@@ -1,19 +1,28 @@
 <script setup>
 import EmployeeCard from "@/components/EmployeeCard.vue";
+import { useAppStore } from "@/stores/store";
+import { onMounted } from "vue";
+import { getEmployees } from "@/api/api";
+
+const appStore = useAppStore();
+
+onMounted(async () => {
+  await getEmployees();
+});
 </script>
 
 <template>
   <main>
     <div class="container">
       <div class="font-roboto">
-        <h1 class="mb-10 text-center font-bold" style="font-size: 2.5rem">
+        <h1 class="mb-24 text-center font-bold" style="font-size: 2.5rem">
           Наши контакты
         </h1>
-        <div
-          class="mx-auto grid grid-cols-1 justify-center gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-4"
-        >
-          <EmployeeCard></EmployeeCard>
-          <EmployeeCard></EmployeeCard>
+        <div class="mx-auto flex flex-wrap justify-center gap-10 pb-10">
+          <EmployeeCard
+            v-for="employee in appStore.employees"
+            :employee="employee"
+          ></EmployeeCard>
         </div>
       </div>
     </div>

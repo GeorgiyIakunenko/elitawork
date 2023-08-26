@@ -34,3 +34,26 @@ export const getJobs = async () => {
     };
   }
 };
+
+export const getEmployees = async () => {
+  try {
+    const res = await api.get(`managers`);
+
+    if (res.status !== 200) {
+      return {
+        success: false,
+        data: res.data,
+      };
+    }
+    useAppStore().setEmployees(res.data);
+    return {
+      success: true,
+      data: res.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: error.response.data,
+    };
+  }
+};
