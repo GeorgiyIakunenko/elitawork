@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-3afq2ajrn5kda6!==+(@^j1ygp*pd)px85e1e-fzqdfqy9jok&
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1'
+    '127.0.0.1',
+    '0.0.0.0',
+    'elitawork.yuriipalamarchuk.com',
 ]
 
 
