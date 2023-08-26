@@ -90,7 +90,7 @@ const isRouteActive = (routeName, isButton = false) => {
 
 <style scoped>
 header {
-  z-index: 10;
+  z-index: 101;
   height: 80px;
 }
 
