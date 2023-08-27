@@ -67,9 +67,10 @@ onMounted(async () => {
               </div>
               <div class="flex flex-col px-2 lg:px-4">
                 <div class="mb-6">
-                  <div class="text-justify">
-                    {{ currentJob.value.description }}
-                  </div>
+                  <div
+                    class="text-justify"
+                    v-html="$sanitize(currentJob.value.description)"
+                  ></div>
                 </div>
                 <div class="">
                   <h3 class="mb-5 text-start text-2xl font-medium">
