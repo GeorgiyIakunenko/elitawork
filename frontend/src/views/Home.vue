@@ -4,27 +4,38 @@ import { scrollToSection } from "@/components/scrollToElement";
 import { onMounted } from "vue";
 import { getJobs } from "@/api/api";
 import { useAppStore } from "@/stores/store";
+import AOS from "aos";
 import Button from "@/components/Button.vue";
 
 onMounted(async () => {
   await getJobs();
+  AOS.init();
 });
 </script>
 
 <template>
   <main class="scroll-smooth font-sans">
     <div class="container">
-      <section id="top" class="flex flex-wrap items-center justify-around">
-        <div class="">
+      <section
+        id="top"
+        class="flex flex-col flex-wrap items-center justify-around sm:flex-row sm:flex-nowrap"
+      >
+        <div class="" data-aos="zoom-out-down">
           <div class="mb-4 md:mb-10">
             <h1 class="text-title font-bold">
               <span>Elita</span><span class="text-red-500">Work</span>
             </h1>
             <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
           </div>
-          <Button @click="scrollToSection('jobs')">Смотреть вакансии</Button>
+          <Button class="px-7 py-3 text-lg" @click="scrollToSection('jobs')"
+            >Смотреть вакансии
+          </Button>
         </div>
-        <img alt="" class="w-max" src="@/assets/images/home-image.jpg" />
+        <img
+          alt="passports"
+          class="sm:max-h-72 lg:max-h-fit"
+          src="@/assets/images/home-2-small.png"
+        />
       </section>
     </div>
 

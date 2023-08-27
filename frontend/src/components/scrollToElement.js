@@ -1,8 +1,10 @@
-export const scrollToSection = (sectionId) => {
+export const scrollToSection = (sectionId, isSmooth = true) => {
   const offsetTop = document.querySelector("#" + sectionId).offsetTop;
   console.log(offsetTop);
   window.scrollTo({
     top: offsetTop - 100,
-    behavior: "smooth",
+    behavior: isSmooth ? "smooth" : "auto",
   });
+
+  return offsetTop;
 };

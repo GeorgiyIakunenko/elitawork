@@ -9,6 +9,10 @@ const router = createRouter({
       return;
     }
 
+    if (to.name === "job") {
+      return { top: 0 };
+    }
+
     if (to.fullPath === "/" && from.path === "/") {
       console.log("home");
       return { top: 0, behavior: "smooth" };
