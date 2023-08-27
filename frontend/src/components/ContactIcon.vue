@@ -27,7 +27,7 @@ const link = computed(() => {
 
 <template>
   <a :href="link[platformName]" class="">
-    <img :alt="platform.name" :src="platform.logo" class="h-4 w-4" />
+    <img :alt="platform.name" :src="platform.logo" class="h-6 w-6" />
   </a>
 </template>
 

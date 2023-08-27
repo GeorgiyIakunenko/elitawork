@@ -1,9 +1,11 @@
 <script setup></script>
 
 <template>
-  <footer class="rounded-lg border-t-2 bg-white dark:bg-gray-900">
+  <footer class="rounded-lg border-t-2 bg-white">
     <div class="mx-auto w-full max-w-screen-xl p-4 md:py-6">
-      <div class="hidden sm:flex sm:items-center sm:justify-between">
+      <div
+        class="flex flex-col-reverse items-center gap-3 sm:items-center sm:justify-between md:flex-row"
+      >
         <span
           class="block text-sm text-gray-500 dark:text-gray-400 sm:text-center"
           >© 2023 <span class="">ElitaWork</span>. All Rights Reserved.</span

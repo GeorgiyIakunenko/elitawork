@@ -11,12 +11,13 @@ const props = defineProps({
 
 <template>
   <div
-    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl border-2 bg-white pb-5 font-sans shadow transition-all duration-300 md:hover:scale-105"
+    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl border-2 bg-white pb-5 font-sans shadow-md transition-all duration-300 md:hover:scale-105"
   >
     <img
       :alt="job.name"
       :src="job.picture"
       class="mb-3 cursor-pointer rounded-xl object-contain"
+      @click="() => router.push({ name: 'job', params: { id: job.id } })"
     />
     <div class="flex flex-grow flex-col px-4">
       <div class="mb-2 flex flex-grow justify-between text-start">

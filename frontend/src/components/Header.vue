@@ -39,12 +39,15 @@ const isRouteActive = (routeName, isButton = false) => {
     <div class="container">
       <div class="wrapper flex items-center justify-between">
         <div
-          class="z-20 cursor-pointer p-1 transition-all duration-300 hover:scale-105"
+          class="z-20 cursor-pointer transition-all duration-300 hover:scale-105"
         >
-          <router-link to="/" @click="CloseMenu">
-            <img alt="logo" class="h-12" src="@/assets/images/logo.png" />
-          </router-link>
+          <div class="m-1">
+            <router-link to="/" @click="CloseMenu">
+              <img alt="logo" class="h-12" src="@/assets/images/logo.png" />
+            </router-link>
+          </div>
         </div>
+
         <div class="flex items-center gap-12">
           <nav
             :class="{ active: menuActive }"
