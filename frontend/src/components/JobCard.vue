@@ -32,7 +32,7 @@ const props = defineProps({
           {{ job.location }}
         </div>
         <button
-          class="btn ml-auto w-fit rounded-xl bg-red-500 px-3.5 py-2 text-primary-white"
+          class="btn ml-auto w-fit rounded-xl bg-red-500 px-3.5 py-2 text-primary-white transition-all duration-300 hover:scale-105 active:translate-y-1"
           @click="() => router.push({ name: 'job', params: { id: job.id } })"
         >
           Подробнее

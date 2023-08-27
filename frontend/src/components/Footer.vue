@@ -1,13 +1,29 @@
 <script setup></script>
 
 <template>
-  <footer class="bg-neutral-30">
-    <div class="container">
-      <div class="flex flex-col items-center gap-2 py-5 font-sans">
-        <div class="">Email : ElitaWork@gmail.com</div>
-        <div class="mb-2">Address : Budapest 1089 vaci utca 7</div>
-
-        <div class="text-sm">© Copyright 2023. All Rights Reserved.</div>
+  <footer
+    class="rounded-lg bg-white drop-shadow-2xl dark:bg-gray-900"
+    style="box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1)"
+  >
+    <div class="mx-auto w-full max-w-screen-xl p-4 md:py-6">
+      <div class="hidden sm:flex sm:items-center sm:justify-between">
+        <span
+          class="block text-sm text-gray-500 dark:text-gray-400 sm:text-center"
+          >© 2023 <span class="">ElitaWork</span>. All Rights Reserved.</span
+        >
+        <div class="flex items-center gap-2">
+          <a
+            class="flex items-center gap-2 text-gray-600 transition-all duration-300 hover:underline dark:text-gray-400"
+            href="https://www.facebook.com/people/Elita-Work/pfbid06N8b2ygJWHi3EKDzxDU7s5eufqnQwhDe84QsCWAxMYPdaWcbgYh5cbtJBW5zwNFjl/?locale=hu_HU"
+          >
+            <span>Мы в Facebook:</span>
+            <img
+              alt="facebook"
+              class="h-6 w-6"
+              src="@/assets/images/facebook.svg"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </footer>
