@@ -34,13 +34,13 @@ onMounted(async () => {
           </h1>
           <div v-if="currentJob.value" class="">
             <div
-              class="mb-5 flex max-h-fit flex-col gap-3 px-1 md:block"
+              class="mb-5 flex max-h-fit flex-col gap-3 px-1 lg:block"
               style="min-height: 24rem"
             >
               <img
                 :alt="currentJob.value.name"
                 :src="currentJob.value.picture"
-                class="mb-2 max-h-96 max-w-fit rounded-xl md:float-left md:mr-3 md:max-w-fit lg:mr-5"
+                class="mb-2 max-h-96 max-w-fit rounded-xl lg:float-left lg:mr-5 lg:mr-7 lg:max-w-fit"
               />
               <div>
                 <div class="mb-2 flex items-center font-medium">
@@ -61,19 +61,19 @@ onMounted(async () => {
                   />
                   <div>{{ currentJob.value.location }}</div>
                 </div>
-                <div>
+                <div class="mb-3">
                   <h3 class="mb-2 text-lg font-medium">Описание:</h3>
                   <div class="indent-5">
                     {{ currentJob.value.description }}
                   </div>
                 </div>
+                <div v-if="currentJob.value.note" class="px-3">
+                  <h3 class="mb-2 text-start text-lg font-medium">
+                    Примечания:
+                  </h3>
+                  <div class="inline indent-5">{{ currentJob.value.note }}</div>
+                </div>
               </div>
-            </div>
-            <div v-if="currentJob.value.note" class="px-3">
-              <h3 class="mb-2 inline text-start text-lg font-medium">
-                Примечания:
-              </h3>
-              <div class="inline indent-5">{{ currentJob.value.note }}</div>
             </div>
           </div>
         </section>
