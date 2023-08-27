@@ -5,7 +5,13 @@ from PIL import Image
 from django.db.models.signals import post_save
 
 
-def image_compressor(sender, **kwargs):
+def image_picture_compressor(sender, **kwargs):
+    if kwargs["created"]:
+        with Image.open(kwargs["instance"].picture.path) as photo:
+            photo.save(kwargs["instance"].picture.path, optimize=True, quality=80)
+
+
+def image_photo_compressor(sender, **kwargs):
     if kwargs["created"]:
         with Image.open(kwargs["instance"].photo.path) as photo:
             photo.save(kwargs["instance"].photo.path, optimize=True, quality=80)
@@ -43,7 +49,7 @@ class Position(models.Model):
         ordering = ['position_order']
 
 
-post_save.connect(image_compressor, sender=Position)
+post_save.connect(image_picture_compressor, sender=Position)
 
 
 class MessengerPlatform(models.Model):
@@ -93,4 +99,4 @@ class Manager(models.Model):
         ordering = ['manager_order']
 
 
-post_save.connect(image_compressor, sender=Manager)
+post_save.connect(image_photo_compressor, sender=Manager)
