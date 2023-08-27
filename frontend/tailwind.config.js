@@ -4,8 +4,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                inter: ["Inter", "sans-serif"],
-                roboto: ["Roboto", "sans-serif"],
+                jost: ["Jost", "sans-serif"],
                 sans: ["DM Sans", "sans-serif"],
             },
             colors: {
@@ -16,13 +15,6 @@ module.exports = {
                     red: "#EF9F27",
                     white: "#FFFFFF",
                     black: "#000000",
-                    500: "#FF991F",
-                    400: "#FF991F",
-                    300: "#FFAB00",
-                    200: "#FFC400",
-                    100: "#FFE380",
-                    75: "#FFF0B3",
-                    50: "#FFFAE5",
                 },
 
                 green: {
@@ -48,34 +40,6 @@ module.exports = {
                     30: "#EBECF0",
                     0o1: "#FAFBFC",
                     0o0: "#FFFFFF",
-                },
-                teal: {
-                    500: "#008DA6",
-                    400: "#00A3BF",
-                    300: "#00B8D9",
-                    200: "#00C7E6",
-                    100: "#79E2F2",
-                    75: "#B3F5FF",
-                    50: "#E6FCFF",
-                },
-                purple: {
-                    500: "#403294",
-                    400: "#5243AA",
-                    300: "#6554C0",
-                    200: "#8777D9",
-                    100: "#998DD9",
-                    75: "#C0B6F2",
-                    50: "#EAE6FF",
-                },
-                blue: {
-                    600: "#063F94",
-                    500: "#0747A6",
-                    400: "#0052CC",
-                    300: "#0065FF",
-                    200: "#2684FF",
-                    100: "#4C9AFF",
-                    75: "#B3D4FF",
-                    50: "#DEEBFF",
                 },
             },
             height: {

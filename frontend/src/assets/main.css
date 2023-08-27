@@ -1,5 +1,6 @@
 @import "normalize.css";
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Inter:wght@600&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Jost:wght@300;400;500;600&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -7,37 +8,37 @@
 
 
 body {
-  min-height: 100vh;
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
-  font-family: Roboto, sans-serif;
-  font-size: 16px;
+    min-height: 100vh;
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 :root {
-  --primary-color: #11AB69;
+    --primary-color: #11AB69;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 main {
-  flex-grow: 1;
-  padding-top: 130px;  /* 70px header + 60px */
-  padding-bottom: 60px;
+    flex-grow: 1;
+    padding-top: 130px; /* 70px header + 60px */
+    padding-bottom: 60px;
 }
 
 .container {
-  max-width: 1230px;
-  margin: 0 auto;
-  padding: 0 15px;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
 }

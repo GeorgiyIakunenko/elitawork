@@ -14,11 +14,15 @@ onMounted(async () => {
 <template>
   <main>
     <div class="container">
-      <div class="font-roboto">
-        <h1 class="mb-24 text-center font-bold" style="font-size: 2.5rem">
+      <div class="font-jost">
+        <h1
+          class="mb-12 text-center text-5xl font-medium text-neutral-700 lg:mb-24"
+        >
           Наши контакты
         </h1>
-        <div class="mx-auto flex flex-wrap justify-center gap-10 pb-10">
+        <div
+          class="mx-auto flex flex-wrap justify-center gap-5 pb-10 lg:grid lg:grid-cols-3 lg:gap-10"
+        >
           <EmployeeCard
             v-for="employee in appStore.employees"
             :employee="employee"
