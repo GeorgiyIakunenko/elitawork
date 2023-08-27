@@ -25,6 +25,13 @@ SECRET_KEY = 'django-insecure-3afq2ajrn5kda6!==+(@^j1ygp*pd)px85e1e-fzqdfqy9jok&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+REST_FRAMEWORK = {}
+
+if not DEBUG:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
+            "rest_framework.renderers.JSONRenderer",
+        )
+
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
@@ -45,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'adminsortable2',
     'corsheaders',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static_files'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media_files/'
