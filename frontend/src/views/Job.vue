@@ -20,8 +20,8 @@ onMounted(async () => {
 
 <template>
   <main>
-    <div class="container">
-      <div class="font-jost">
+    <div class="font-jost">
+      <div class="container">
         <button
           class="btn mb-5 ml-auto w-fit rounded-xl bg-neutral-200 px-3.5 py-2 text-primary-white transition-all duration-300 hover:scale-105 active:translate-y-1"
           @click="() => router.push({ name: 'homeJobs' })"
@@ -38,19 +38,9 @@ onMounted(async () => {
                 <img
                   :alt="currentJob.value.name"
                   :src="currentJob.value.picture"
-                  class="mb-5 max-h-96 max-w-fit rounded-xl lg:max-w-fit"
+                  class="mb-4 max-h-96 max-w-fit rounded-xl lg:max-w-fit"
                 />
-                <div class="flex items-center gap-3 text-lg">
-                  <div class="flex items-center font-medium">
-                    <img
-                      v-if="currentJob.value.salary"
-                      alt="location"
-                      class="mr-2 h-5 w-5"
-                      src="@/assets/images/salary.svg"
-                    />
-                    <div>{{ currentJob.value.salary }}</div>
-                  </div>
-
+                <div class="flex flex-col gap-2 text-lg">
                   <div class="flex items-center font-medium">
                     <div>
                       <img
@@ -62,6 +52,15 @@ onMounted(async () => {
                     </div>
 
                     <div>{{ currentJob.value.location }}</div>
+                  </div>
+                  <div class="flex items-center font-medium">
+                    <img
+                      v-if="currentJob.value.salary"
+                      alt="location"
+                      class="mr-2 h-5 w-5"
+                      src="@/assets/images/salary.svg"
+                    />
+                    <div>{{ currentJob.value.salary }}</div>
                   </div>
                 </div>
               </div>
@@ -84,7 +83,12 @@ onMounted(async () => {
             </div>
           </div>
         </section>
-        <section class="">
+      </div>
+      <hr
+        class="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8"
+      />
+      <section class="">
+        <div class="container">
           <h2 class="mb-4 text-center text-3xl font-semibold text-neutral-700">
             Заинтересовала вакансия?
           </h2>
@@ -105,8 +109,8 @@ onMounted(async () => {
               ></EmployeeJobCard>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   </main>
 </template>

@@ -1,10 +1,7 @@
 <script setup></script>
 
 <template>
-  <footer
-    class="rounded-lg bg-white drop-shadow-2xl dark:bg-gray-900"
-    style="box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1)"
-  >
+  <footer class="rounded-lg border-t-2 bg-white dark:bg-gray-900">
     <div class="mx-auto w-full max-w-screen-xl p-4 md:py-6">
       <div class="hidden sm:flex sm:items-center sm:justify-between">
         <span
