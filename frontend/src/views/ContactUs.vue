@@ -1,6 +1,7 @@
 <script setup>
 import EmployeeCard from "@/components/EmployeeCard.vue";
 import { useAppStore } from "@/stores/store";
+import AOS from "aos";
 import { onMounted } from "vue";
 import { getEmployees } from "@/api/api";
 
@@ -8,6 +9,7 @@ const appStore = useAppStore();
 
 onMounted(async () => {
   await getEmployees();
+  AOS.init();
 });
 </script>
 
@@ -26,6 +28,8 @@ onMounted(async () => {
           <EmployeeCard
             v-for="employee in appStore.employees"
             :employee="employee"
+            data-aos="zoom-in-up"
+            data-aos-duration="1000"
           ></EmployeeCard>
         </div>
       </div>

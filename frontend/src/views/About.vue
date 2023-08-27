@@ -88,7 +88,7 @@ onMounted(() => {
             data-aos="fade-up"
             data-aos-duration="1000"
           >
-            <div class="mb-4 flex items-center justify-center gap-3">
+            <div class="mb-4 flex flex-wrap items-center justify-center gap-3">
               <img alt="" class="h-12" src="@/assets/images/client.svg" />
               <div class="text-lg">Клиентоориентированность</div>
             </div>

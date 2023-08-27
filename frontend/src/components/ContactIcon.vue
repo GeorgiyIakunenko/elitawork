@@ -20,7 +20,7 @@ const link = computed(() => {
     whatsapp: "https://api.whatsapp.com/send?phone=" + props.phone,
     viber: "viber://add?number=" + props.phone,
     phone: "tel:" + props.phone,
-    facebook: "https://m.me/" + props.phone, // Assuming Facebook uses phone number
+    facebook: "https://m.me/" + props.phone,
   };
 });
 </script>

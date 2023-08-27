@@ -26,17 +26,20 @@ onMounted(async () => {
         </div>
         <img alt="" class="w-max" src="@/assets/images/home-image.jpg" />
       </section>
+    </div>
 
-      <section id="jobs" class="text-center">
-        <h2 class="mb-10 text-4xl font-bold text-red-500">Наши вакансии:</h2>
+    <section id="jobs" class="mb-10 text-center font-jost lg:mb-20">
+      <div class="container">
+        <h2 class="mb-14 text-4xl font-bold text-red-500 lg:mb-16">
+          Наши вакансии:
+        </h2>
         <div
           class="mx-auto grid grid-cols-1 justify-center gap-3 gap-y-9 sm:grid-cols-2 md:gap-5 lg:grid-cols-3"
         >
           <JobCard v-for="job in useAppStore().jobs" :job="job"></JobCard>
         </div>
-      </section>
-      <a>scroll</a>
-    </div>
+      </div>
+    </section>
   </main>
 </template>
 

@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl border-2 pb-5 font-sans shadow transition-all duration-300 md:hover:scale-105"
+    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl border-2 bg-white pb-5 font-sans shadow transition-all duration-300 md:hover:scale-105"
   >
     <img
       :alt="job.name"
@@ -23,7 +23,7 @@ const props = defineProps({
         <div class="mb-1 pl-1 text-xl font-medium">{{ job.name }}</div>
       </div>
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 text-sm">
           <img
             alt="location"
             class="h-5 w-5"
