@@ -62,6 +62,7 @@ class Manager(models.Model):
     name = models.CharField(max_length=100, verbose_name="Имя")
     photo = models.ImageField(null=True, upload_to="managers", verbose_name="Фото")
     job_position = models.CharField(max_length=50, verbose_name="Должность")
+    facebook = models.URLField(verbose_name="Ссылка на фейсбук")
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
     positions = models.ManyToManyField(Position, blank=True, verbose_name="Позиции")
 

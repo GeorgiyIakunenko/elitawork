@@ -77,7 +77,7 @@ class ContactInline(admin.TabularInline):
 
 
 class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ("name", "get_photo_small", "manager_order")
+    list_display = ("name", "job_position", "get_photo_small", "manager_order")
     list_display_links = ("name",)
     readonly_fields = ('get_photo_large',)
     inlines = [ContactInline]
@@ -93,14 +93,14 @@ class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
     get_photo_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "job_position", "positions", "photo")
+        self.fields = ("name", "job_position", "facebook", "positions", "photo")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ("name", "job_position", "positions")
+                 'fields': ("name", "job_position", "facebook", "positions")
              }
              ),
             (None,
@@ -124,7 +124,6 @@ class MessengerPlatformAdmin(admin.ModelAdmin):
 
 admin.site.register(Position, PositionAdmin)
 admin.site.register(Manager, ManagerAdmin)
-admin.site.register(Contact)
 admin.site.register(MessengerPlatform, MessengerPlatformAdmin)
 
 admin.site.unregister(Group)
