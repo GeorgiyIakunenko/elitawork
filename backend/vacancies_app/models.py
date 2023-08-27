@@ -1,9 +1,17 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from ckeditor.fields import RichTextField
+from PIL import Image
+from django.db.models.signals import post_save
+
+
+def image_compressor(sender, **kwargs):
+    if kwargs["created"]:
+        with Image.open(kwargs["instance"].photo.path) as photo:
+            photo.save(kwargs["instance"].photo.path, optimize=True, quality=80)
 
 
 def validate_svg_file(value):
-    # You can add more specific SVG validations here if needed.
     if not value.name.endswith('.svg'):
         raise ValidationError("Only SVG files are allowed.")
 
@@ -16,8 +24,9 @@ class Position(models.Model):
     salary = models.CharField(max_length=100, verbose_name="Зарплата")
     location = models.CharField(max_length=100, verbose_name="Город, Страна")
     note = models.CharField(blank=True, null=True, max_length=100, verbose_name="Примечание (если есть)")
-    short_description = models.TextField(max_length=300, verbose_name="Краткое описание для мета тега, максимум 300 символов")
-    description = models.TextField(verbose_name="Description")
+    short_description = models.TextField(max_length=300,
+                                         verbose_name="Краткое описание для мета тега, максимум 300 символов")
+    description = RichTextField(verbose_name="Description")
 
     position_order = models.PositiveIntegerField(
         default=0,
@@ -32,6 +41,9 @@ class Position(models.Model):
         verbose_name = "Позиция"
         verbose_name_plural = "Позиции"
         ordering = ['position_order']
+
+
+post_save.connect(image_compressor, sender=Position)
 
 
 class MessengerPlatform(models.Model):
@@ -79,3 +91,6 @@ class Manager(models.Model):
         verbose_name = "Менеджер"
         verbose_name_plural = "Менеджеры"
         ordering = ['manager_order']
+
+
+post_save.connect(image_compressor, sender=Manager)

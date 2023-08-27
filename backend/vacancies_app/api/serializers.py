@@ -30,7 +30,7 @@ class PositionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Position
         lookup_field = 'slug'
-        fields = ('id', 'slug', 'name', 'important', 'picture', 'salary', 'location', 'note', 'description', 'managers')
+        fields = ('id', 'slug', 'name', 'important', 'picture', 'salary', 'location', 'note', 'short_description', 'description', 'managers')
 
 
 class PositionSummarySerializer(serializers.ModelSerializer):
