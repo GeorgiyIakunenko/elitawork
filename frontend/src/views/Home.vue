@@ -15,28 +15,30 @@ onMounted(async () => {
 
 <template>
   <main class="scroll-smooth font-sans">
-    <div class="container">
-      <section
-        id="top"
-        class="flex flex-col flex-wrap items-center justify-around sm:flex-row sm:flex-nowrap"
-      >
-        <div class="" data-aos="zoom-out-down">
-          <div class="mb-4 md:mb-10">
-            <h1 class="text-title font-bold">
-              <span>Elita</span><span class="text-red-500">Work</span>
-            </h1>
-            <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
+    <div class="top">
+      <div class="container">
+        <section
+          id="top"
+          class="flex flex-col flex-wrap items-center justify-start sm:flex-row sm:flex-nowrap md:justify-center"
+        >
+          <div class="mr-auto md:ml-20" data-aos="zoom-out-down">
+            <div class="mb-4 md:mb-10">
+              <h1 class="text-title font-bold">
+                <span>Elita</span><span class="text-red-500">Work</span>
+              </h1>
+              <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
+            </div>
+            <Button class="px-7 py-3 text-lg" @click="scrollToSection('jobs')"
+              >Смотреть вакансии
+            </Button>
           </div>
-          <Button class="px-7 py-3 text-lg" @click="scrollToSection('jobs')"
-            >Смотреть вакансии
-          </Button>
-        </div>
-        <img
-          alt="passports"
-          class="sm:max-h-72 lg:max-h-fit"
-          src="@/assets/images/home-2-small.png"
-        />
-      </section>
+          <img
+            alt="passports"
+            class="hidden sm:max-h-72 lg:max-h-fit"
+            src="@/assets/images/home-2-small.png"
+          />
+        </section>
+      </div>
     </div>
 
     <section id="jobs" class="mb-10 text-center font-jost lg:mb-20">
@@ -57,6 +59,19 @@ onMounted(async () => {
 <style scoped>
 #top {
   min-height: calc(100vh - 100px);
+}
+
+.top {
+  background-image: url("@/assets/images/home-2-small.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: right;
+}
+
+@media (min-width: 640px) {
+  .top {
+    background-size: 50%;
+  }
 }
 
 @media (min-width: 768px) {
