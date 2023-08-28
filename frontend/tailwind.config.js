@@ -4,6 +4,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
+                primary: ["Jost", "sans-serif"],
                 jost: ["Jost", "sans-serif"],
                 sans: ["DM Sans", "sans-serif"],
             },
@@ -47,6 +48,9 @@ module.exports = {
             },
             fontSize: {
                 "title": "4rem",
+            },
+            scale: {
+                102: "1.02",
             },
             translate: {
                 "-104": "-26rem",

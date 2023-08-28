@@ -4,6 +4,7 @@ import router from "@/router";
 import { onMounted, reactive, ref } from "vue";
 import { getEmployees, getJobs } from "@/api/api";
 import EmployeeJobCard from "@/components/EmployeeJobCard.vue";
+import { useHead } from "@vueuse/head";
 
 const appStore = useAppStore();
 
@@ -17,6 +18,16 @@ onMounted(async () => {
   await getEmployees();
   appStore.getCurrentJob(id);
   currentJob.value = appStore.currentJob;
+  console.log(currentJob.value);
+  useHead({
+    title: "Вакансия " + currentJob.value.name + " - " + "Elita Work",
+    meta: [
+      {
+        name: "description",
+        content: currentJob.value.short_description,
+      },
+    ],
+  });
   loading.value = false;
 });
 </script>

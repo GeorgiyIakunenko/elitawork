@@ -14,6 +14,7 @@ export const useAppStore = defineStore("store", {
       location: "",
       note: "",
       description: "",
+      shortDescription: "",
       managers: [],
     });
     const setCurrentJob = (job) => {
@@ -25,6 +26,7 @@ export const useAppStore = defineStore("store", {
       currentJob.salary = job.salary;
       currentJob.location = job.location;
       currentJob.note = job.note;
+      currentJob.short_description = job.short_description;
       currentJob.description = job.description;
       currentJob.managers = job.managers;
     };

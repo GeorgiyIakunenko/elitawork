@@ -4,6 +4,7 @@ import { useAppStore } from "@/stores/store";
 import { onMounted, ref } from "vue";
 import { getEmployees } from "@/api/api";
 import AOS from "aos";
+import { useHead } from "@vueuse/head";
 
 const appStore = useAppStore();
 const loading = ref(false);
@@ -11,7 +12,16 @@ onMounted(async () => {
   AOS.init();
   loading.value = true;
   await getEmployees();
-
+  useHead({
+    title: "Связаться с нами" + " - " + "Elita Work",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Контакты компании Elita Work ,  Наша команда высококвалифицированных профессионалов с радостью окажет исчерпывающие ответы на все ваши вопросы, связанные с трудоустройством.",
+      },
+    ],
+  });
   loading.value = false;
 });
 </script>
@@ -22,10 +32,16 @@ onMounted(async () => {
       <div class="container">
         <div class="font-jost">
           <h1
-            class="mb-12 text-center text-5xl font-medium text-neutral-700 lg:mb-24"
+            class="mb-12 text-center text-5xl font-medium text-neutral-700 lg:mb-16"
           >
             Наши контакты
           </h1>
+          <p class="mx-auto mb-16 px-2 text-center md:w-3/5">
+            Наша команда высококвалифицированных профессионалов с радостью
+            окажет исчерпывающие ответы на все ваши вопросы, связанные с
+            трудоустройством. Мы готовы поделиться нашим глубоким опытом, чтобы
+            помочь вам принимать осознанные решения в этом важном процессе.
+          </p>
           <div
             v-if="!loading"
             class="mx-auto flex flex-wrap justify-center gap-5 pb-10 lg:grid lg:grid-cols-3 lg:gap-10"

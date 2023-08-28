@@ -1,38 +1,79 @@
 <script setup>
 import JobCard from "@/components/JobCard.vue";
-import { scrollToSection } from "@/components/scrollToElement";
-import { onMounted, ref } from "vue";
+import { nextTick, onMounted, ref, watch } from "vue";
 import { getJobs } from "@/api/api";
 import { useAppStore } from "@/stores/store";
 import AOS from "aos";
 import Button from "@/components/Button.vue";
+import { useHead } from "@vueuse/head";
+import router from "@/router";
+
+const scrollToSection = (sectionId, isSmooth = true) => {
+  const offsetTop = document.querySelector("#" + sectionId).offsetTop;
+  console.log(offsetTop);
+  window.scrollTo({
+    top: offsetTop,
+    behavior: isSmooth ? "smooth" : "auto",
+  });
+  return offsetTop;
+};
 
 const loading = ref(false);
 onMounted(async () => {
   AOS.init();
   loading.value = true;
   await getJobs();
-
+  useHead({
+    title: "Вакансии" + " - " + "Elita Work",
+    link: [],
+    meta: [
+      {
+        name: "description",
+        content:
+          "Наши вакансии. Мы находим, вы выбираете! Присоединяйтесь к нашей команде профессионалов и найдите идеальную вакансию.",
+      },
+    ],
+  });
   loading.value = false;
+  if (router.currentRoute.value.name === "homeJobs") {
+    setTimeout(() => {
+      scrollToSection("jobsSection", true);
+    }, 1);
+  }
 });
+
+watch(
+  () => router.currentRoute.value.name,
+  (to, from) => {
+    if (to === "homeJobs") {
+      nextTick(() => {
+        scrollToSection("jobsSection", true);
+      });
+    }
+  },
+);
 </script>
 
 <template>
-  <main class="scroll-smooth font-sans">
+  <main class="scroll-smooth font-primary">
     <div class="top">
       <div class="container">
         <section
           id="top"
-          class="flex flex-col flex-wrap items-center justify-start sm:flex-row sm:flex-nowrap md:justify-center"
+          class="flex flex-col flex-wrap items-center sm:flex-row sm:flex-nowrap md:justify-center"
         >
-          <div class="mr-auto md:ml-20" data-aos="zoom-out-down">
+          <div class="main-content mr-auto md:ml-20" data-aos="zoom-out-down">
             <div class="mb-4 md:mb-10">
-              <h1 class="text-title font-bold">
+              <h1 class="text-7xl font-bold lg:text-9xl">
                 <span>Elita</span><span class="text-red-500">Work</span>
               </h1>
-              <p class="text-lg text-neutral-700">Мы находим, вы выбираете!</p>
+              <p class="pl-2 text-lg text-neutral-700 lg:pl-2 lg:text-2xl">
+                Мы находим, вы выбираете!
+              </p>
             </div>
-            <Button class="px-7 py-3 text-lg" @click="scrollToSection('jobs')"
+            <Button
+              class="ml-3 px-7 py-3 text-lg"
+              @click="scrollToSection('jobsSection')"
               >Смотреть вакансии
             </Button>
           </div>
@@ -45,7 +86,10 @@ onMounted(async () => {
       </div>
     </div>
 
-    <section id="jobs" class="mb-10 text-center font-jost lg:mb-20">
+    <section
+      id="jobsSection"
+      class="-mb-24 pt-24 text-center font-primary lg:-mt-24 lg:mb-20"
+    >
       <div class="container">
         <h2 class="mb-14 text-4xl font-bold text-red-500 lg:mb-16">
           Наши вакансии:
@@ -89,15 +133,29 @@ onMounted(async () => {
 }
 
 .top {
-  background-image: url("@/assets/images/home-2-small.png");
+  background-image: url("@/assets/images/home-full.png");
   background-repeat: no-repeat;
-  background-size: 60%;
-  background-position: right;
+  background-size: contain;
+  background-position: center 65%;
 }
 
 @media (min-width: 640px) {
   .top {
-    background-size: 50%;
+    background-position: right;
+    background-size: 45%;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    margin-top: 20%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .top {
+    background-position: right;
+    background-size: 40%;
   }
 }
 

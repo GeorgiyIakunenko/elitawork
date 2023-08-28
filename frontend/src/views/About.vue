@@ -1,14 +1,25 @@
 <script setup>
 import { onMounted } from "vue";
 import AOS from "aos";
+import { useHead } from "@vueuse/head";
 
 onMounted(() => {
   AOS.init();
+  useHead({
+    title: "О нас" + " - " + "Elita Work",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Компания Elita Work - это инновационная и динамично развивающаяся организация, специализирующаяся в области трудоустройства, рекрутинга и управления персоналом.",
+      },
+    ],
+  });
 });
 </script>
 
 <template>
-  <main class="min-h-screen bg-gray-100 font-sans">
+  <main class="min-h-screen bg-gray-100 font-primary">
     <div class="container">
       <div class="rounded-lg bg-white p-8 shadow-md">
         <h1 class="mb-7 text-center text-3xl font-semibold md:mb-14">О нас</h1>
@@ -47,7 +58,7 @@ onMounted(() => {
             src="@/assets/images/advantage.svg"
           />
           <h2 class="my-20 text-2xl font-bold text-green-400">
-            Наши преймущества
+            Наши преимущества
           </h2>
         </div>
         <div class="flex flex-col gap-8">

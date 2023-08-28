@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import router from "@/router";
 import Button from "@/components/Button.vue";
+import { scrollToSection } from "@/components/scrollToElement";
 
 const menuActive = ref(false);
 
@@ -30,11 +31,21 @@ const isRouteActive = (routeName, isButton = false) => {
 
   return "hover:text-red-500 transition-all";
 };
+
+const pushToJob = () => {
+  if (router.currentRoute.value.name === "homeJobs") {
+    scrollToSection("jobsSection", true);
+  } else {
+    router.push({ name: "homeJobs" });
+  }
+
+  CloseMenu();
+};
 </script>
 
 <template>
   <header
-    class="fixed left-0 right-0 top-0 bg-primary-white py-3 font-sans shadow-md"
+    class="fixed left-0 right-0 top-0 bg-primary-white py-3 font-jost shadow-md"
   >
     <div class="container">
       <div class="wrapper flex items-center justify-between">
@@ -56,10 +67,12 @@ const isRouteActive = (routeName, isButton = false) => {
             <ul
               class="mt-12 flex gap-3 font-medium text-primary-black md:mt-0 md:gap-12"
             >
-              <li :class="isRouteActive('homeJobs')" class="relative">
-                <router-link :to="{ name: 'homeJobs' }" @click="CloseMenu">
-                  Вакансии
-                </router-link>
+              <li
+                :class="isRouteActive('homeJobs')"
+                class="relative cursor-pointer"
+                @click="pushToJob"
+              >
+                Вакансии
                 <div class="link__underline"></div>
               </li>
               <li :class="isRouteActive('about')" class="relative">

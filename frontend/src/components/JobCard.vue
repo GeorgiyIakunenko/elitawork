@@ -11,7 +11,8 @@ const props = defineProps({
 
 <template>
   <div
-    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl border-2 bg-white pb-5 font-sans shadow-md transition-all duration-300 md:hover:scale-105"
+    :class="{ 'bg-neutral-0': job.important }"
+    class="relative z-10 flex min-w-full max-w-xl flex-col rounded-xl bg-white pb-5 font-primary shadow-md drop-shadow-xl transition-all duration-300 md:hover:scale-102"
   >
     <img
       :alt="job.name"

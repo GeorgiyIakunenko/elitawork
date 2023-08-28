@@ -1,14 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { scrollToSection } from "@/components/scrollToElement";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from) {
-    if (to.name === "homeJobs") {
-      scrollToSection("jobs");
-      return;
-    }
-
     if (to.name === "job") {
       return { top: 0 };
     }
