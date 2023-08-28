@@ -83,7 +83,7 @@ onMounted(async () => {
                       v-html="$sanitize(currentJob.value.description)"
                   ></div>
                 </div>
-                <div class="">
+                <div v-if="currentJob.value.note">
                   <h3 class="mb-2 text-start text-md font-medium">
                     Примечания:
                   </h3>
