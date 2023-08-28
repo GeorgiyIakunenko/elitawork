@@ -38,14 +38,16 @@ class PositionAdmin(SortableAdminMixin, admin.ModelAdmin):
     get_picture_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "slug", "important", "salary", "location", "note", "short_description", "description", "picture")
+        self.fields = (
+        "name", "slug", "important", "salary", "location", "note", "short_description", "description", "picture")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ('name', 'slug', 'important', 'salary', 'location', 'note', 'short_description', 'description')
+                 'fields': (
+                 'name', 'slug', 'important', 'salary', 'location', 'note', 'short_description', 'description')
              }
              ),
             (None,
@@ -122,12 +124,17 @@ class MessengerPlatformAdmin(admin.ModelAdmin):
     get_logo.short_description = "Logo"
 
 
+class ContactAdmin(admin.ModelAdmin):
+    def has_module_permission(self, request):
+        return False
+
+
 admin.site.register(Position, PositionAdmin)
 admin.site.register(Manager, ManagerAdmin)
 admin.site.register(MessengerPlatform, MessengerPlatformAdmin)
+admin.site.register(Contact, ContactAdmin)
 
 admin.site.unregister(Group)
-
 
 admin.site.site_title = "Elita Work Admin"
 admin.site.site_header = "Elita Work Admin"
