@@ -21,7 +21,7 @@ class BaseManagerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Manager
-        fields = ('id', 'name', 'photo', 'contacts')
+        fields = ('id', 'name', 'photo', 'facebook', 'contacts')
 
 
 class PositionSerializer(serializers.ModelSerializer):
