@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
 import router from "@/router";
 import Button from "@/components/Button.vue";
 import { scrollToSection } from "@/components/scrollToElement";
@@ -32,11 +32,16 @@ const isRouteActive = (routeName, isButton = false) => {
   return "hover:text-red-500 transition-all";
 };
 
-const pushToJob = () => {
-  if (router.currentRoute.value.name === "homeJobs") {
-    scrollToSection("jobsSection", true);
+const pushToJob = async () => {
+  if (
+    router.currentRoute.value.name === "homeJobs" ||
+    router.currentRoute.value.name === "home"
+  ) {
+    await nextTick(() => {
+      scrollToSection("jobsSection", true);
+    });
   } else {
-    router.push({ name: "homeJobs" });
+    await router.push({ name: "homeJobs" });
   }
 
   CloseMenu();

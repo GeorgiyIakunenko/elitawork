@@ -46,6 +46,13 @@ const props = defineProps({
     >
       {{ job.salary }}
     </div>
+    <div
+      v-if="job.important"
+      class="absolute right-0 top-3 flex items-center gap-2 rounded-l-3xl bg-green-400 py-1 pl-3 pr-2 font-medium text-neutral-0"
+    >
+      Сейчас набор
+      <img alt="time" class="h-6 w-6" src="@/assets/images/time.svg" />
+    </div>
   </div>
 </template>
 

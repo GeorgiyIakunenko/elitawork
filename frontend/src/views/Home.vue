@@ -1,22 +1,13 @@
 <script setup>
 import JobCard from "@/components/JobCard.vue";
-import { nextTick, onMounted, ref, watch } from "vue";
+import { nextTick, onMounted, ref } from "vue";
 import { getJobs } from "@/api/api";
 import { useAppStore } from "@/stores/store";
 import AOS from "aos";
 import Button from "@/components/Button.vue";
 import { useHead } from "@vueuse/head";
 import router from "@/router";
-
-const scrollToSection = (sectionId, isSmooth = true) => {
-  const offsetTop = document.querySelector("#" + sectionId).offsetTop;
-  console.log(offsetTop);
-  window.scrollTo({
-    top: offsetTop,
-    behavior: isSmooth ? "smooth" : "auto",
-  });
-  return offsetTop;
-};
+import { scrollToSection } from "@/components/scrollToElement";
 
 const loading = ref(false);
 onMounted(async () => {
@@ -35,23 +26,13 @@ onMounted(async () => {
     ],
   });
   loading.value = false;
-  if (router.currentRoute.value.name === "homeJobs") {
-    setTimeout(() => {
-      scrollToSection("jobsSection", true);
-    }, 1);
-  }
-});
 
-watch(
-  () => router.currentRoute.value.name,
-  (to, from) => {
-    if (to === "homeJobs") {
-      nextTick(() => {
-        scrollToSection("jobsSection", true);
-      });
+  await nextTick(() => {
+    if (router.currentRoute.value.name === "homeJobs") {
+      scrollToSection("jobsSection", true);
     }
-  },
-);
+  });
+});
 </script>
 
 <template>
@@ -88,7 +69,7 @@ watch(
 
     <section
       id="jobsSection"
-      class="-mb-24 pt-24 text-center font-primary lg:-mt-24 lg:mb-20"
+      class="-mt-24 pt-24 text-center font-primary lg:mb-20"
     >
       <div class="container">
         <h2 class="mb-14 text-4xl font-bold text-red-500 lg:mb-16">
