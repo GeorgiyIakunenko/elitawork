@@ -6,15 +6,13 @@ from django.db.models.signals import post_save
 
 
 def image_picture_compressor(sender, **kwargs):
-    if kwargs["created"]:
-        with Image.open(kwargs["instance"].picture.path) as photo:
-            photo.save(kwargs["instance"].picture.path, optimize=True, quality=80)
+    with Image.open(kwargs["instance"].picture.path) as photo:
+        photo.save(kwargs["instance"].picture.path, optimize=True, quality=80)
 
 
 def image_photo_compressor(sender, **kwargs):
-    if kwargs["created"]:
-        with Image.open(kwargs["instance"].photo.path) as photo:
-            photo.save(kwargs["instance"].photo.path, optimize=True, quality=80)
+    with Image.open(kwargs["instance"].photo.path) as photo:
+        photo.save(kwargs["instance"].photo.path, optimize=True, quality=80)
 
 
 def validate_svg_file(value):
