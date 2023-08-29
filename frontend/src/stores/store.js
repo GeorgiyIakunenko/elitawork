@@ -33,9 +33,9 @@ export const useAppStore = defineStore("store", {
     const setJobs = (data) => {
       jobs.value = data;
     };
-    const getCurrentJob = (id) => {
+    const getCurrentJob = (slug) => {
       const foundJob = jobs.value.find(
-        (job) => job.id.toString() === id.toString(),
+        (job) => job.slug.toString() === slug.toString(),
       );
       if (foundJob) {
         setCurrentJob(foundJob);

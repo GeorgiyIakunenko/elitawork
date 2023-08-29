@@ -43,7 +43,7 @@ const router = createRouter({
       component: () => import("@/views/PageNotFound.vue"),
     },
     {
-      path: "/job/:id",
+      path: "/job/:slug",
       name: "job",
       component: () => import("../views/Job.vue"),
     },

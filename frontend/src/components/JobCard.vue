@@ -18,7 +18,7 @@ const props = defineProps({
       :alt="job.name"
       :src="job.picture"
       class="mb-3 cursor-pointer rounded-xl object-contain"
-      @click="() => router.push({ name: 'job', params: { id: job.id } })"
+      @click="() => router.push({ name: 'job', params: { slug: job.slug } })"
     />
     <div class="flex flex-grow flex-col px-4">
       <div class="mb-2 flex flex-grow justify-between text-start">
@@ -35,7 +35,7 @@ const props = defineProps({
         </div>
         <button
           class="btn ml-auto w-fit rounded-xl bg-red-500 px-3.5 py-2 text-primary-white transition-all duration-300 hover:scale-105 active:translate-y-1"
-          @click="() => router.push({ name: 'job', params: { id: job.id } })"
+          @click="() => router.push({ name: 'job', params: { slug: job.slug } })"
         >
           Подробнее
         </button>

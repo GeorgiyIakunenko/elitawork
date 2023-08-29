@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  echo_backend:
+    container_name: elitawork-backend-container
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+
+  echo_frontend:
+    container_name: elitawork-frontend-container
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/srv/app
+    ports:
+      - "8001:8001"

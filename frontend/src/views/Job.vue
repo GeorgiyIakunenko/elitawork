@@ -8,7 +8,7 @@ import { useHead } from "@vueuse/head";
 
 const appStore = useAppStore();
 
-const id = router.currentRoute.value.params.id;
+const slug = router.currentRoute.value.params.slug;
 const currentJob = reactive({ value: { managers: [] } });
 let loading = ref(false);
 
@@ -16,7 +16,7 @@ onMounted(async () => {
   loading.value = true;
   await getJobs();
   await getEmployees();
-  appStore.getCurrentJob(id);
+  appStore.getCurrentJob(slug);
   currentJob.value = appStore.currentJob;
   //console.log(currentJob.value);
   useHead({
