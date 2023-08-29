@@ -57,3 +57,28 @@ export const getEmployees = async () => {
     };
   }
 };
+
+export const getPartners = async () => {
+  try {
+    const res = await api.get(`partners`);
+
+    if (res.status !== 200) {
+      return {
+        success: false,
+        data: res.data,
+      };
+    }
+
+    console.log(res.data);
+
+    return {
+      success: true,
+      data: res.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      data: error.response.data,
+    };
+  }
+};

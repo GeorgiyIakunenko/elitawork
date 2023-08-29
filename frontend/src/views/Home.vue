@@ -58,11 +58,6 @@ onMounted(async () => {
               >Смотреть вакансии
             </Button>
           </div>
-          <img
-            alt="passports"
-            class="hidden sm:max-h-72 lg:max-h-fit"
-            src="@/assets/images/home-2-small.png"
-          />
         </section>
       </div>
     </div>
