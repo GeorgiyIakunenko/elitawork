@@ -8,7 +8,7 @@ const router = createRouter({
     }
 
     if (to.fullPath === "/" && from.path === "/") {
-      console.log("home");
+      //console.log("home");
       return { top: 0, behavior: "smooth" };
     }
 

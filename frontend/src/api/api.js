@@ -69,8 +69,6 @@ export const getPartners = async () => {
       };
     }
 
-    console.log(res.data);
-
     return {
       success: true,
       data: res.data,

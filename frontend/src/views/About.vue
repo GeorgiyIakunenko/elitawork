@@ -25,7 +25,7 @@ onMounted(async () => {
     partners.value = res.data;
   }
   loading.value = false;
-  console.log(partners.value);
+  //console.log(partners.value);
 });
 </script>
 
