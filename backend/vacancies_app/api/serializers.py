@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import Position, Manager, MessengerPlatform, Contact
+from ..models import Position, Manager, MessengerPlatform, Contact, Partner
 
 
 class MessengerPlatformSerializer(serializers.ModelSerializer):
@@ -44,3 +44,9 @@ class ManagerSerializer(BaseManagerSerializer):
 
     class Meta(BaseManagerSerializer.Meta):
         fields = '__all__'
+
+
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partner
+        fields = ('name', 'link', 'picture',)

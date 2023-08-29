@@ -98,3 +98,26 @@ class Manager(models.Model):
 
 
 post_save.connect(image_photo_compressor, sender=Manager)
+
+
+class Partner(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название")
+    link = models.URLField(blank=True, verbose_name="Ссылка на сайт")
+    picture = models.ImageField(upload_to="partners", verbose_name="Логотип")
+
+    partner_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Партнер"
+        verbose_name_plural = "Партнеры"
+        ordering = ['partner_order']
+
+
+post_save.connect(image_picture_compressor, sender=Partner)

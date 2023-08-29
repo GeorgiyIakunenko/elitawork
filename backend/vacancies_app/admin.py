@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib.auth.models import Group
-from .models import Position, Manager, Contact, MessengerPlatform
+from .models import Position, Manager, Contact, MessengerPlatform, Partner
 
 
 def manager_through_str(self):
@@ -39,7 +39,7 @@ class PositionAdmin(SortableAdminMixin, admin.ModelAdmin):
 
     def add_view(self, request, extra_content=None):
         self.fields = (
-        "name", "slug", "important", "salary", "location", "note", "short_description", "description", "picture")
+            "name", "slug", "important", "salary", "location", "note", "short_description", "description", "picture")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
@@ -47,7 +47,7 @@ class PositionAdmin(SortableAdminMixin, admin.ModelAdmin):
             (None,
              {
                  'fields': (
-                 'name', 'slug', 'important', 'salary', 'location', 'note', 'short_description', 'description')
+                     'name', 'slug', 'important', 'salary', 'location', 'note', 'short_description', 'description')
              }
              ),
             (None,
@@ -129,10 +129,22 @@ class ContactAdmin(admin.ModelAdmin):
         return False
 
 
+class PartnerAdmin(SortableAdminMixin, admin.ModelAdmin):
+    def get_picture(self, obj):
+        return mark_safe(f'<img src={obj.picture.url} width=150px')
+
+    get_picture.short_description = "Логотип"
+
+    list_display = ("name", "get_picture", "partner_order")
+    list_display_links = ("name",)
+    readonly_fields = ("get_picture",)
+
+
 admin.site.register(Position, PositionAdmin)
 admin.site.register(Manager, ManagerAdmin)
 admin.site.register(MessengerPlatform, MessengerPlatformAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Partner, PartnerAdmin)
 
 admin.site.unregister(Group)
 
