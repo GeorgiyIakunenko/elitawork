@@ -4,6 +4,6 @@ WORKDIR /srv/app
 
 COPY . .
 
-EXPOSE 8001
+EXPOSE 8011
 
 CMD npm install && npm run build && npm run preview
