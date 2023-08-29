@@ -1,8 +1,11 @@
 import axios from "axios";
-import {useAppStore} from "@/stores/store";
+import { useAppStore } from "@/stores/store";
 
-//const BASE_URL = "/api/v1";
-const BASE_URL = "https://elitawork.com/api/v1";
+let BASE_URL = "/api/v1";
+
+if (import.meta.env.MODE === "development") {
+  BASE_URL = "https://elitawork.com/api/v1";
+}
 
 const api = axios.create({
   baseURL: BASE_URL,
