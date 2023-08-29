@@ -43,7 +43,7 @@ onMounted(async () => {
           id="top"
           class="flex flex-col flex-wrap items-center sm:flex-row sm:flex-nowrap md:justify-center"
         >
-          <div class="main-content mr-auto md:ml-20" data-aos="zoom-out-down">
+          <div class="main-content mr-auto md" data-aos="zoom-out-down">
             <div class="mb-4 md:mb-10">
               <h1 class="text-7xl font-bold lg:text-9xl">
                 <span>Elita</span><span class="text-red-500">Work</span>
