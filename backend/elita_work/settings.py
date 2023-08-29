@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3afq2ajrn5kda6!==+(@^j1ygp*pd)px85e1e-fzqdfqy9jok&'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 REST_FRAMEWORK = {}
 
@@ -35,9 +37,12 @@ if not DEBUG:
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
-    'elitawork.yuriipalamarchuk.com',
+    'elitawork.com',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://elitawork.com'
+]
 
 # Application definition
 
@@ -58,6 +63,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
