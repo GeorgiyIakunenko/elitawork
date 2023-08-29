@@ -77,12 +77,18 @@ onMounted(async () => {
               v-for="partner in partners"
               class="flex flex-col items-center gap-4 lg:gap-7"
             >
-              <a :href="partner.link" class="cursor-pointer"
+              <a v-if="partner.link" :href="partner.link" class="cursor-pointer"
                 ><img
                   :alt="partner.name"
                   :src="partner.picture"
                   class="h-20 rounded-full border"
               /></a>
+              <img
+                v-else
+                :alt="partner.name"
+                :src="partner.picture"
+                class="h-20 rounded-full border"
+              />
 
               <p class="text-center font-medium">{{ partner.name }}</p>
             </div>
