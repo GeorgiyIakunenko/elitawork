@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "vite build",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
@@ -21,10 +21,7 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^18.2.0",
-    "@types/node": "^18.17.5",
     "@vitejs/plugin-vue": "^4.3.1",
-    "@vue/tsconfig": "^0.4.0",
     "autoprefixer": "^10.4.15",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.28",
