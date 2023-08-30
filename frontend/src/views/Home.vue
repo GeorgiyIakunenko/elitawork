@@ -53,7 +53,7 @@ onMounted(async () => {
               </p>
             </div>
             <Button
-              class="ml-3 px-7 py-3 text-lg"
+              class="lg:ml-3 ml-1 px-7 py-3 text-lg"
               @click="scrollToSection('jobsSection')"
               >Смотреть вакансии
             </Button>
