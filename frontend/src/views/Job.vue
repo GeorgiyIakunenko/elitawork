@@ -137,12 +137,12 @@ onMounted(async () => {
               :class="{
                 'lg:grid-cols-3': currentJob.value.managers.length > 3,
               }"
-              class="mx-auto flex w-fit flex-col flex-wrap items-center justify-center gap-5 pb-10 md:flex-row lg:grid lg:gap-10"
+              class="mx-auto flex w-fit flex-col flex-wrap items-center justify-center gap-5 pb-10 lg:grid lg:gap-10"
             >
               <EmployeeJobCard
                 v-for="employee in currentJob.value.managers"
                 :employee="employee"
-                class="ml-0 lg:ml-auto"
+                class="ml-0"
               ></EmployeeJobCard>
             </div>
           </div>
