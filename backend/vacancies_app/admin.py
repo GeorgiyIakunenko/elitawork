@@ -1,18 +1,11 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from adminsortable2.admin import SortableAdminMixin
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 from django.contrib.auth.models import Group
 from .models import Position, Manager, Contact, MessengerPlatform, Partner
 
 
-def manager_through_str(self):
-    return f"{self.manager.name}"
-
-
-Manager.positions.through.__str__ = manager_through_str
-
-
-class ManagerInline(admin.TabularInline):
+class ManagerInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Manager.positions.through
     extra = 1
     verbose_name = "Менеджер для этой позиции"
@@ -95,14 +88,14 @@ class ManagerAdmin(SortableAdminMixin, admin.ModelAdmin):
     get_photo_large.short_description = "Пример"
 
     def add_view(self, request, extra_content=None):
-        self.fields = ("name", "job_position", "facebook", "positions", "photo")
+        self.fields = ("name", "job_position", "facebook", "photo")
         return super().add_view(request)
 
     def change_view(self, request, object_id, extra_context=None):
         self.fieldsets = (
             (None,
              {
-                 'fields': ("name", "job_position", "facebook", "positions")
+                 'fields': ("name", "job_position", "facebook")
              }
              ),
             (None,

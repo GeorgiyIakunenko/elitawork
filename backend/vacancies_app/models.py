@@ -80,7 +80,7 @@ class Manager(models.Model):
     job_position = models.CharField(max_length=50, verbose_name="Должность")
     facebook = models.URLField(verbose_name="Ссылка на фейсбук")
     contacts = models.ManyToManyField(Contact, verbose_name="Контакты")
-    positions = models.ManyToManyField(Position, blank=True, verbose_name="Позиции")
+    positions = models.ManyToManyField(Position, blank=True, through='ManagerPosition', verbose_name="Позиции")
 
     manager_order = models.PositiveIntegerField(
         default=0,
@@ -98,6 +98,20 @@ class Manager(models.Model):
 
 
 post_save.connect(image_photo_compressor, sender=Manager)
+
+
+class ManagerPosition(models.Model):
+    manager = models.ForeignKey(Manager, on_delete=models.CASCADE)
+    position = models.ForeignKey(Position, on_delete=models.CASCADE)
+    order_manager_position = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    def __str__(self):
+        return f"{self.manager.name} - {self.position.name}"
+
+    class Meta:
+        verbose_name = "Менеджер для позиции"
+        verbose_name_plural = "Менеджеры для позиций"
+        ordering = ['order_manager_position']
 
 
 class Partner(models.Model):

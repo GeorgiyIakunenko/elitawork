@@ -1,5 +1,6 @@
+from django.db.models import F
 from rest_framework import serializers
-from ..models import Position, Manager, MessengerPlatform, Contact, Partner
+from ..models import Position, Manager, MessengerPlatform, Contact, Partner, ManagerPosition
 
 
 class MessengerPlatformSerializer(serializers.ModelSerializer):
@@ -25,7 +26,14 @@ class BaseManagerSerializer(serializers.ModelSerializer):
 
 
 class PositionSerializer(serializers.ModelSerializer):
-    managers = BaseManagerSerializer(many=True, source='manager_set')
+    managers = BaseManagerSerializer(many=True)
+
+    def to_representation(self, instance):
+        ordered_managers = Manager.objects.filter(managerposition__position=instance).annotate(
+            order_value=F('managerposition__order_manager_position')
+        ).order_by('order_value')
+        instance.managers = ordered_managers
+        return super().to_representation(instance)
 
     class Meta:
         model = Position
