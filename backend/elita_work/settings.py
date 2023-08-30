@@ -37,11 +37,14 @@ if not DEBUG:
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '0.0.0.0',
+    '146.59.15.192',
     'elitawork.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://elitawork.com'
+    'https://elitawork.com',
+    'http://elitawork.com'
+    'http://146.59.15.192',
 ]
 
 # Application definition
