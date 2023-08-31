@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  echo_work_backend:
+  echo_elitawork_backend:
     container_name: elitawork-backend-container
     build:
       context: backend
@@ -9,7 +9,7 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "8010:8010"
+      - "127.0.0.1:8010:8010"
 
   echo_elitawork_frontend:
     container_name: elitawork-frontend-container
@@ -20,4 +20,4 @@ services:
       - ./frontend:/srv/app
       - /srv/app/node_modules
     ports:
-      - "8011:8011"
+      - "127.0.0.1:8011:8011"

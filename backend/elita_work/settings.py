@@ -36,15 +36,12 @@ if not DEBUG:
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '0.0.0.0',
-    '146.59.15.192',
+    'localhost',
     'elitawork.com',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://elitawork.com',
-    'http://elitawork.com'
-    'http://146.59.15.192',
 ]
 
 # Application definition
@@ -75,7 +72,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://elitawork.com",
+    "http://elitawork.com",
+    "http://localhost:8011",
+]
 
 ROOT_URLCONF = 'elita_work.urls'
 
